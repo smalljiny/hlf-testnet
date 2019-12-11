@@ -8,7 +8,7 @@ networks:
 services:
 
   kafka0.example.com:
-    container_name: kafka0.example.com
+    #container_name: kafka0.example.com
     image: hyperledger/fabric-kafka
     depends_on:
     - zookeeper0.example.com
@@ -16,7 +16,7 @@ services:
     - zookeeper2.example.com
     environment:
       - KAFKA_BROKER_ID=1
-      - KAFKA_ZOOKEEPER_CONNECT=zookeeper0.example.com:2181,zookeeper1.example.com:2181,zookeeper2.example.com:2181
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper0:2181,zookeeper1:2181,zookeeper2:2181
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka0.example.com:9092
       - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
       - KAFKA_MESSAGE_MAX_BYTES=1048576 # 1 * 1024 * 1024 B
@@ -40,7 +40,7 @@ services:
     networks:
       hlf:
         aliases: 
-          - kafka0.example.com
+          - kafka0
 
   kafka1.example.com:
     container_name: kafka1.example.com
@@ -51,7 +51,7 @@ services:
     - zookeeper2.example.com
     environment:
       - KAFKA_BROKER_ID=1
-      - KAFKA_ZOOKEEPER_CONNECT=zookeeper0.example.com:2181,zookeeper1.example.com:2181,zookeeper2.example.com:2181
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper0:2181,zookeeper1:2181,zookeeper2:2181
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka1.example.com:9092
       - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
       - KAFKA_MESSAGE_MAX_BYTES=1048576 # 1 * 1024 * 1024 B
@@ -75,7 +75,7 @@ services:
     networks:
       hlf:
         aliases: 
-          - kafka1.example.com
+          - kafka1
 
   kafka2.example.com:
     container_name: kafka2.example.com
@@ -86,7 +86,7 @@ services:
     - zookeeper2.example.com
     environment:
       - KAFKA_BROKER_ID=1
-      - KAFKA_ZOOKEEPER_CONNECT=zookeeper0.example.com:2181,zookeeper1.example.com:2181,zookeeper2.example.com:2181
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper0:2181,zookeeper1:2181,zookeeper2:2181
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka2.example.com:9092
       - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
       - KAFKA_MESSAGE_MAX_BYTES=1048576 # 1 * 1024 * 1024 B
@@ -110,7 +110,7 @@ services:
     networks:
       hlf:
         aliases: 
-          - kafka2.example.com
+          - kafka2
 
   zookeeper0.example.com:
     container_name: zookeeper0.example.com
@@ -133,7 +133,7 @@ services:
     networks:
       hlf:
         aliases: 
-          - zookeeper0.example.com
+          - zookeeper0
 
   zookeeper1.example.com:
     container_name: zookeeper1.example.com
@@ -156,7 +156,7 @@ services:
     networks:
       hlf:
         aliases: 
-          - zookeeper1.example.com
+          - zookeeper1
   
   zookeeper2.example.com:
     container_name: zookeeper2.example.com
@@ -179,4 +179,4 @@ services:
     networks:
       hlf:
         aliases: 
-          - zookeeper2.example.com
+          - zookeeper2
