@@ -136,7 +136,7 @@ services:
           - zookeeper0.example.com
 
     zookeeper1.example.com:
-    container_name: zookeeper0.example.com
+    container_name: zookeeper1.example.com
     image: hyperledger/fabric-zookeeper
     environment:
       ZOOKEEPER_CLIENT_PORT: 32181
