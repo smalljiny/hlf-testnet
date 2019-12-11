@@ -135,7 +135,7 @@ services:
         aliases: 
           - zookeeper0.example.com
 
-    zookeeper1.example.com:
+  zookeeper1.example.com:
     container_name: zookeeper1.example.com
     image: hyperledger/fabric-zookeeper
     environment:
